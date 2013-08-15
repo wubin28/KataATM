@@ -4,7 +4,7 @@ Feature: Kata ATM
   I want to use ATM to check the balance, deposit money, withdraw money, and recharge units to an electricity card.
 
   Scenario Outline: ATM Services
-    Given the balance of account is 0
+    Given the initial balance of account is 0
     When I <do> a kind of self-service using an ATM
     And in <amount>
     When I check the balance

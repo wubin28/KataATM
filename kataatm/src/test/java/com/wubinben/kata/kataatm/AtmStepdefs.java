@@ -13,10 +13,11 @@ import cucumber.api.java.en.When;
  * To change this template use File | Settings | File Templates.
  */
 public class AtmStepdefs {
-    @Given("^the balance of account is (\\d+)$")
-    public void the_balance_of_account_is(int arg1) throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
+    private int initialBalance;
+
+    @Given("^the initial balance of account is (\\d+)$")
+    public void the_initial_balance_of_account_is(int initialBalance) throws Throwable {
+        this.initialBalance = initialBalance;
     }
 
     @When("^I deposit a kind of self-service using an ATM$")
