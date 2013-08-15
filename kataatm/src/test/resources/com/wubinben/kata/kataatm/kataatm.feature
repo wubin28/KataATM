@@ -5,14 +5,14 @@ Feature: Kata ATM
 
   Scenario Outline: ATM Services
     Given the initial balance of account is 0
-    When I <do> a kind of self-service using an ATM
-    And in <amount>
-    When I check the balance
+    When I <selfService>
+    And <amount> using an ATM
+    And I check the balance
     Then the balance should be <balance>
     And the added units in the electricity card should be <addedUnits>
 
   Examples:
-    | do | amount | balance | addedUnits |
-    | deposit | 1000 | 1000 | 0          |
-    | withdraw | 300 | 700  | 0          |
-    | recharge electricity | 100 | 500 | 100 |
+    | selfService                     | amount | balance | addedUnits |
+    | deposit in RMB Yuan           | 1000   | 1000   | 0          |
+    | withdraw in RMB Yuan          | 300    | 700    | 0          |
+    | recharge electricity in unit | 100    | 500     | 100       |

@@ -1,6 +1,7 @@
 package com.wubinben.kata.kataatm;
 
 import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -29,18 +30,18 @@ public class AtmStepdefs {
         this.initialBalance = initialBalance;
     }
 
-    @When("^I (deposit|withdraw|recharge electricity) a kind of self-service using an ATM$")
-    public void I_deposit_a_kind_of_self_service_using_an_ATM(String action) throws Throwable {
+    @When("^I (deposit in RMB Yuan|withdraw in RMB Yuan|recharge electricity in unit)$")
+    public void I_do_self_service(String action) throws Throwable {
         LOGGER.info(">>action: " + action);
     }
 
-    @When("^in (\\d+)$")
-    public void in(int arg1) throws Throwable {
+    @And("^(\\d+) using an ATM$")
+    public void using_an_ATM(int arg1) throws Throwable {
         // Express the Regexp above with the code you wish you had
         throw new PendingException();
     }
 
-    @When("^I check the balance$")
+    @And("^I check the balance$")
     public void I_check_the_balance() throws Throwable {
         // Express the Regexp above with the code you wish you had
         throw new PendingException();
@@ -52,7 +53,7 @@ public class AtmStepdefs {
         throw new PendingException();
     }
 
-    @Then("^the added units in the electricity card should be (\\d+)$")
+    @And("^the added units in the electricity card should be (\\d+)$")
     public void the_added_units_in_the_electricity_card_should_be(int arg1) throws Throwable {
         // Express the Regexp above with the code you wish you had
         throw new PendingException();
