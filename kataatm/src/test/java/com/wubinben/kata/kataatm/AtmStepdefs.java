@@ -31,14 +31,10 @@ public class AtmStepdefs {
         this.initialBalance = initialBalance;
     }
 
-    @When("^I (deposit in RMB Yuan|withdraw in RMB Yuan|recharge electricity in unit)$")
-    public void I_do_self_service(String action) throws Throwable {
-        LOGGER.info(">>action: " + action);
-    }
-
-    @And("^(\\d+) using an ATM$")
-    public void using_an_ATM(int amount) throws Throwable {
+    @When("^I (deposit in RMB Yuan|withdraw in RMB Yuan|recharge electricity in unit) (\\d+) using an ATM$")
+    public void I_do_self_service(String action, int amount) throws Throwable {
         this.amount = amount;
+        LOGGER.info(">>action: " + action);
     }
 
     @And("^I check the balance$")

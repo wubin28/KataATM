@@ -5,8 +5,7 @@ Feature: Kata ATM
 
   Scenario Outline: ATM Services
     Given the initial balance of account is 0
-    When I <selfService>
-    And <amount> using an ATM
+    When I <selfService> <amount> using an ATM
     And I check the balance
     Then the balance should be <balance>
     And the added units in the electricity card should be <addedUnits>
