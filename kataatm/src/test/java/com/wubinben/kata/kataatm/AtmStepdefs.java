@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 public class AtmStepdefs {
     private int initialBalance;
     private static final Logger LOGGER = Logger.getLogger(AtmStepdefs.class.getName());
+    private int amount;
 
     public AtmStepdefs() {
         // To turn on logging, set level to be Level.INFO.
@@ -36,9 +37,8 @@ public class AtmStepdefs {
     }
 
     @And("^(\\d+) using an ATM$")
-    public void using_an_ATM(int arg1) throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
+    public void using_an_ATM(int amount) throws Throwable {
+        this.amount = amount;
     }
 
     @And("^I check the balance$")
