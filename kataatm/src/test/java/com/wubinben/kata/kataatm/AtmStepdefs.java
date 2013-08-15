@@ -5,6 +5,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ben
@@ -14,16 +17,21 @@ import cucumber.api.java.en.When;
  */
 public class AtmStepdefs {
     private int initialBalance;
+    private static final Logger LOGGER = Logger.getLogger(AtmStepdefs.class.getName());
+
+    public AtmStepdefs() {
+        // To turn on logging, set level to be Level.INFO.
+        LOGGER.setLevel(Level.INFO);
+    }
 
     @Given("^the initial balance of account is (\\d+)$")
     public void the_initial_balance_of_account_is(int initialBalance) throws Throwable {
         this.initialBalance = initialBalance;
     }
 
-    @When("^I deposit a kind of self-service using an ATM$")
-    public void I_deposit_a_kind_of_self_service_using_an_ATM() throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
+    @When("^I (deposit|withdraw|recharge electricity) a kind of self-service using an ATM$")
+    public void I_deposit_a_kind_of_self_service_using_an_ATM(String action) throws Throwable {
+        LOGGER.info(">>action: " + action);
     }
 
     @When("^in (\\d+)$")
@@ -46,19 +54,6 @@ public class AtmStepdefs {
 
     @Then("^the added units in the electricity card should be (\\d+)$")
     public void the_added_units_in_the_electricity_card_should_be(int arg1) throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
-    }
-
-    @When("^I withdraw a kind of self-service using an ATM$")
-    public void I_withdraw_a_kind_of_self_service_using_an_ATM() throws Throwable {
-        // Express the Regexp above with the code you wish you had
-        throw new PendingException();
-    }
-
-    @When("^I recharge electricity a kind of self-service using an ATM$")
-    public void I_recharge_electricity_a_kind_of_self_service_using_an_ATM() throws
-            Throwable {
         // Express the Regexp above with the code you wish you had
         throw new PendingException();
     }
