@@ -18,36 +18,38 @@ import static org.junit.Assert.assertEquals;
  * To change this template use File | Settings | File Templates.
  */
 public class AtmStepdefs {
-    private int balance;
+    private int balance = 0;
     private static final Logger LOGGER = Logger.getLogger(AtmStepdefs.class.getName());
     private int amount;
-    private int addedUnits;
+    private int addedUnits = 0;
 
     public AtmStepdefs() {
         // To turn on logging, set level to be Level.INFO.
-        LOGGER.setLevel(Level.INFO);
+        LOGGER.setLevel(Level.OFF);
     }
 
-    @Given("^the initial balance of account is (\\d+)$")
-    public void the_initial_balance_of_account_is(int balance) throws Throwable {
-        this.balance = balance;
+    @Given("^the old balance of my account is (\\d+)$")
+    public void the_old_balance_of_my_account_is(int oldBalance) throws Throwable {
+        this.balance = oldBalance;
     }
 
     @When("^I (deposit in RMB Yuan|withdraw in RMB Yuan|recharge electricity in unit) (\\d+) using an ATM$")
     public void I_do_self_service(String action, int amount) throws Throwable {
         this.amount = amount;
         LOGGER.info(">>action: " + action);
+        if (action.equals("deposit in RMB Yuan")) {
+            this.balance += amount;
+        } else if (action.equals("withdraw in RMB Yuan")) {
+            this.balance -= amount;
+        } else if (action.equals("recharge electricity in unit")) {
+            this.addedUnits = amount;
+            this.balance -= amount * 2;
+        }
     }
 
-    @And("^I check the balance$")
-    public void I_check_the_balance() throws Throwable {
-        this.balance = 1000;
-        this.addedUnits = 0;
-    }
-
-    @Then("^the balance should be (\\d+)$")
-    public void the_balance_should_be(int currentBalance) throws Throwable {
-        assertEquals("the current balance is not right.", currentBalance, this.balance);
+    @Then("^the new balance should be (\\d+)$")
+    public void the_new_balance_should_be(int newBalance) throws Throwable {
+        assertEquals("the new balance is not right.", newBalance, this.balance);
     }
 
     @And("^the added units in the electricity card should be (\\d+)$")
