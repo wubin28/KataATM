@@ -1,6 +1,7 @@
 package com.wubinben.kata.kataatm.toolkit;
 
 import com.wubinben.kata.kataatm.application.Account;
+import com.wubinben.kata.kataatm.application.Command;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,6 +12,7 @@ import com.wubinben.kata.kataatm.application.Account;
  */
 public class MenuItem {
     private final String menuItemName;
+    private Command command;
 
     public MenuItem(String menuItemName) {
         this.menuItemName = menuItemName;
@@ -30,5 +32,9 @@ public class MenuItem {
 
     public void recharge(Account account, int amount) {
         account.withdraw(amount * 2);
+    }
+
+    public void clicked(Account account, int amount) {
+        this.command.execute(account, amount);
     }
 }
