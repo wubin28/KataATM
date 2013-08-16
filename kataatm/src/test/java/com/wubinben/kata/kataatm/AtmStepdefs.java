@@ -22,6 +22,7 @@ public class AtmStepdefs {
     private static final Logger LOGGER = Logger.getLogger(AtmStepdefs.class.getName());
     private int amount;
     private int addedUnits = 0;
+    private AtmFacade atmFacade = AtmFacade.newInstance();
 
     public AtmStepdefs() {
         // To turn on logging, set level to be Level.INFO.
@@ -37,6 +38,8 @@ public class AtmStepdefs {
     public void I_do_self_service(String action, int amount) throws Throwable {
         this.amount = amount;
         LOGGER.info(">>action: " + action);
+
+        this.atmFacade.doSelfService(action, amount);
         if (action.equals("deposit in RMB Yuan")) {
             this.balance += amount;
         } else if (action.equals("withdraw in RMB Yuan")) {
