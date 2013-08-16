@@ -1,8 +1,7 @@
 package com.wubinben.kata.kataatm;
 
 
-import com.wubinben.kata.kataatm.application.Account;
-import com.wubinben.kata.kataatm.application.ElectricityCard;
+import com.wubinben.kata.kataatm.application.*;
 import com.wubinben.kata.kataatm.toolkit.MenuItem;
 
 /**
@@ -20,11 +19,18 @@ public class AtmFacade {
     private ElectricityCard electricityCard;
 
     public AtmFacade() {
-        this.depositMenuItem = MenuItem.newInstance("deposit");
-        this.withdrawMenuItem = MenuItem.newInstance("withdraw");
-        this.electricityCardMenuItem = MenuItem.newInstance("electricityCard");
         this.account = Account.newInstance(0);
         this.electricityCard = ElectricityCard.newInstance(0);
+
+        this.depositMenuItem = MenuItem.newInstance("deposit");
+        this.depositMenuItem.setCommand(DepositCommand.newInstance());
+
+        this.withdrawMenuItem = MenuItem.newInstance("withdraw");
+        this.withdrawMenuItem.setCommand(WithdrawCommand.newInstance());
+
+        this.electricityCardMenuItem = MenuItem.newInstance("electricityCard");
+        this.electricityCardMenuItem.setCommand(ElectricityCardCommand.newInstance());
+
     }
 
     public static AtmFacade newInstance() {
@@ -33,14 +39,14 @@ public class AtmFacade {
 
     public void doSelfService(String action, int amount) {
         if (action.equals("deposit in RMB Yuan")) {
-            this.depositMenuItem.deposit(this.account, amount);
+            //this.depositMenuItem.deposit(this.account, amount);
             this.depositMenuItem.clicked(this.account, amount);
         } else if (action.equals("withdraw in RMB Yuan")) {
-            this.withdrawMenuItem.withdraw(this.account, amount);
-            this.depositMenuItem.clicked(this.account, amount);
+            //this.withdrawMenuItem.withdraw(this.account, amount);
+            this.withdrawMenuItem.clicked(this.account, amount);
         } else if (action.equals("recharge electricity in unit")) {
             this.electricityCard.recharge(amount);
-            this.electricityCardMenuItem.recharge(this.account, amount);
+            //this.electricityCardMenuItem.recharge(this.account, amount);
             this.electricityCardMenuItem.clicked(this.account, amount);
         }
     }

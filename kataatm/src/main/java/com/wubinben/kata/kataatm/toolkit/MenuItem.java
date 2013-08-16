@@ -37,4 +37,8 @@ public class MenuItem {
     public void clicked(Account account, int amount) {
         this.command.execute(account, amount);
     }
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
 }
