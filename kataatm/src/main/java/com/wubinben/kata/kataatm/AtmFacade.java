@@ -1,6 +1,10 @@
 package com.wubinben.kata.kataatm;
 
 
+import com.wubinben.kata.kataatm.application.Account;
+import com.wubinben.kata.kataatm.application.ElectricityCard;
+import com.wubinben.kata.kataatm.toolkit.MenuItem;
+
 /**
  * Created with IntelliJ IDEA.
  * User: Ben

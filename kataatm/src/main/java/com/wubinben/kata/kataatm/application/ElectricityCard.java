@@ -1,4 +1,4 @@
-package com.wubinben.kata.kataatm;
+package com.wubinben.kata.kataatm.application;
 
 /**
  * Created with IntelliJ IDEA.

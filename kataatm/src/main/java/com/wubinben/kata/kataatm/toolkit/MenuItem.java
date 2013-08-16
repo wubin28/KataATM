@@ -1,4 +1,6 @@
-package com.wubinben.kata.kataatm;
+package com.wubinben.kata.kataatm.toolkit;
+
+import com.wubinben.kata.kataatm.application.Account;
 
 /**
  * Created with IntelliJ IDEA.
