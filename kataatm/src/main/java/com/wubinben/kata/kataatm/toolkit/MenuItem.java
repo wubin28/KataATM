@@ -22,18 +22,6 @@ public class MenuItem {
         return new MenuItem(menuItemName);
     }
 
-    public void deposit(Account account, int amount) {
-        account.deposit(amount);
-    }
-
-    public void withdraw(Account account, int amount) {
-        account.withdraw(amount);
-    }
-
-    public void recharge(Account account, int amount) {
-        account.withdraw(amount * 2);
-    }
-
     public void clicked(Account account, int amount) {
         this.command.execute(account, amount);
     }
