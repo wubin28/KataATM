@@ -8,5 +8,11 @@ package com.wubinben.kata.kataatm.application;
  * To change this template use File | Settings | File Templates.
  */
 public abstract class Command {
-    public abstract void execute(Account account, int amount);
+    protected Account account;
+
+    public Command(Account account) {
+        this.account = account;
+    }
+
+    public abstract void execute(int amount);
 }

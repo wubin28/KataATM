@@ -8,12 +8,17 @@ package com.wubinben.kata.kataatm.application;
  * To change this template use File | Settings | File Templates.
  */
 public class DepositCommand extends Command {
-    @Override
-    public void execute(Account account, int amount) {
-        account.deposit(amount);
+
+    public DepositCommand(Account account) {
+        super(account);
     }
 
-    public static DepositCommand newInstance() {
-        return new DepositCommand();
+    @Override
+    public void execute(int amount) {
+        super.account.deposit(amount);
+    }
+
+    public static DepositCommand newInstance(Account account) {
+        return new DepositCommand(account);
     }
 }

@@ -8,12 +8,16 @@ package com.wubinben.kata.kataatm.application;
  * To change this template use File | Settings | File Templates.
  */
 public class ElectricityCardCommand extends Command {
-    @Override
-    public void execute(Account account, int amount) {
-        account.withdraw(amount * 2);
+    public ElectricityCardCommand(Account account) {
+        super(account);    //To change body of overridden methods use File | Settings | File Templates.
     }
 
-    public static ElectricityCardCommand newInstance() {
-        return new ElectricityCardCommand();
+    @Override
+    public void execute(int amount) {
+        super.account.withdraw(amount * 2);
+    }
+
+    public static ElectricityCardCommand newInstance(Account account) {
+        return new ElectricityCardCommand(account);
     }
 }

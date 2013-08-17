@@ -1,6 +1,5 @@
 package com.wubinben.kata.kataatm.toolkit;
 
-import com.wubinben.kata.kataatm.application.Account;
 import com.wubinben.kata.kataatm.application.Command;
 
 /**
@@ -22,8 +21,8 @@ public class MenuItem {
         return new MenuItem(menuItemName);
     }
 
-    public void clicked(Account account, int amount) {
-        this.command.execute(account, amount);
+    public void clicked(int amount) {
+        this.command.execute(amount);
     }
 
     public void setCommand(Command command) {

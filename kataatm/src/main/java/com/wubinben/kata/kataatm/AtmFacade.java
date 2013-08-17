@@ -23,13 +23,13 @@ public class AtmFacade {
         this.electricityCard = ElectricityCard.newInstance(0);
 
         this.depositMenuItem = MenuItem.newInstance("deposit");
-        this.depositMenuItem.setCommand(DepositCommand.newInstance());
+        this.depositMenuItem.setCommand(DepositCommand.newInstance(this.account));
 
         this.withdrawMenuItem = MenuItem.newInstance("withdraw");
-        this.withdrawMenuItem.setCommand(WithdrawCommand.newInstance());
+        this.withdrawMenuItem.setCommand(WithdrawCommand.newInstance(this.account));
 
         this.electricityCardMenuItem = MenuItem.newInstance("electricityCard");
-        this.electricityCardMenuItem.setCommand(ElectricityCardCommand.newInstance());
+        this.electricityCardMenuItem.setCommand(ElectricityCardCommand.newInstance(this.account));
 
     }
 
@@ -39,12 +39,12 @@ public class AtmFacade {
 
     public void doSelfService(String action, int amount) {
         if (action.equals("deposit in RMB Yuan")) {
-            this.depositMenuItem.clicked(this.account, amount);
+            this.depositMenuItem.clicked(amount);
         } else if (action.equals("withdraw in RMB Yuan")) {
-            this.withdrawMenuItem.clicked(this.account, amount);
+            this.withdrawMenuItem.clicked(amount);
         } else if (action.equals("recharge electricity in unit")) {
             this.electricityCard.recharge(amount);
-            this.electricityCardMenuItem.clicked(this.account, amount);
+            this.electricityCardMenuItem.clicked(amount);
         }
     }
 

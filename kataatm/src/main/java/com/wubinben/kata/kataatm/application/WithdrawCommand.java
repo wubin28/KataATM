@@ -8,12 +8,16 @@ package com.wubinben.kata.kataatm.application;
  * To change this template use File | Settings | File Templates.
  */
 public class WithdrawCommand extends Command {
-    @Override
-    public void execute(Account account, int amount) {
-        account.withdraw(amount);
+    public WithdrawCommand(Account account) {
+        super(account);
     }
 
-    public static WithdrawCommand newInstance() {
-        return new WithdrawCommand();
+    @Override
+    public void execute(int amount) {
+        super.account.withdraw(amount);
+    }
+
+    public static WithdrawCommand newInstance(Account account) {
+        return new WithdrawCommand(account);
     }
 }
